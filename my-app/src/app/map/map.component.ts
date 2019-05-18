@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient} from '@angular/common/http';
 
 declare var google;
 
@@ -13,10 +13,10 @@ export class MapComponent implements OnInit {
   lat: number = 0;
   lng: number = 0;
   zoom: number = 14;
-  //@TODO Abhinav add what you want
+
   riskZones = [
-    {lat: 43.663470 + 0.0025, lng: -79.419980 - 0.003}, //Christie Pits Park
-    {lat: 43.648400 + 0.0025, lng: -79.397310 - 0.003}, //Grafitti Alley
+    // {lat: 43.663470 + 0.0025, lng: -79.419980 - 0.003}, //Christie Pits Park
+    // {lat: 43.648400 + 0.0025, lng: -79.397310 - 0.003}, //Grafitti Alley
     {lat: 43.664456 + 0.0025, lng: -79.390442 - 0.003}, //UofT
     {lat: 43.655640 + 0.0025, lng: -79.386800 - 0.003} //Younge-Dundas
   ];
@@ -36,7 +36,7 @@ export class MapComponent implements OnInit {
     let self = this;
     let x = 0;
     let y = 0;
-
+    //TODO: NGROK
     this.http.get('http://eaf6f417.ngrok.io/api/OverdoseReport').subscribe((val) => {
       console.log("POST call successful value returned in body", val);
       for (let i = 0; i < Object.keys(val).length; i++ ) {
