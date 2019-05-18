@@ -31,8 +31,8 @@ import { AgmOverlays } from 'agm-overlays';
     AppRoutingModule,
     AgmOverlays,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAKDu8ti6WtofsN6S5oH8GByrZL0zasCVs' + '&libraries=visualization',
-      libraries: ["places"]
+      apiKey: 'AIzaSyC9ieYUxxb1a6qEfytJWGJVfr_EfDScyNY' + '',
+      libraries: ["places"],
     })
   ],
   providers: [],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http'
 
 declare var google;
 
@@ -16,13 +17,11 @@ export class MapComponent implements OnInit {
   riskZones = [
     {lat: 43.651492, lng: -79.405834},
     {lat: 43.663038, lng: -79.410632},
-    {lat: 43.664456, lng: -79.384590},
+    {lat: 43.664456, lng: -79.390442},
     {lat: 43.662129, lng: -79.380147}
   ];
 
-  safeZones = [
-    {lat: 43.657758, lng: -79.402242},
-  ];
+  safeZones = [];
 
   infoWindow: any;
   service: any;
@@ -30,6 +29,16 @@ export class MapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    let x = 0;
+    let y = 0;
+    for (let i = 0; i < this.riskZones.length; i++) {
+      x += this.riskZones[i]['lat'];
+      y += this.riskZones[i]['lng'];
+    }
+    this.safeZones.push({
+      'lat': x/this.riskZones.length,
+      'lng' : y/this.riskZones.length
+    });
   }
 
   mapReady(map: any) {
@@ -50,17 +59,28 @@ export class MapComponent implements OnInit {
     //Search for parks
     this.service.nearbySearch({
       location: {
-        lat: this.lat,
-        lng: this.lng
+        lat: this.riskZones[0]['lat'],
+        lng: this.riskZones[0]['lng']
       },
-      radius: 2500,
+      radius: 1000,
       type: 'park'
     }, function (results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
+        let index = 0;
+        let minLat = Math.abs(self.safeZones[0].lat - results[0].geometry.location.lat()) ;
+        let minLng = Math.abs(self.safeZones[0].lng - results[0].geometry.location.lng());
         for (let i = 0; i < results.length; i++) {
-          //@TODO will softcode later
-          //createMarker(results[i]);
+          let lat = Math.abs(self.safeZones[0].lat - results[i].geometry.location.lat());
+          let lng = Math.abs(self.safeZones[0].lng - results[i].geometry.location.lng());
+          if (minLat + minLng > lat + lng) {
+            minLat = lat;
+            minLng = lng;
+            index = i;
+          }
         }
+        self.safeZones[0].lat = results[index].geometry.location.lat() + 0.0025;
+        self.safeZones[0].lng = results[index].geometry.location.lng() - 0.003;
+        createMarker(results[index]);
       }
     });
 
@@ -70,8 +90,8 @@ export class MapComponent implements OnInit {
         lat: this.lat,
         lng: this.lng
       },
-      radius: 2500,
-      type: 'pharmacy'
+      radius: 1000,
+      type: 'doctor'
     }, function (results, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         for (let i = 0; i < results.length; i++) {
@@ -88,7 +108,7 @@ export class MapComponent implements OnInit {
 
       google.maps.event.addListener(marker, 'click', function () {
         self.infoWindow.setContent('<div><strong>' + loc.name + '</strong><br>' +
-          'Located at ' + loc.vicinity //@TODO Abhinav
+          'Located at ' + loc.vicinity
           + '</div>');
         self.infoWindow.open(map, this);
       });
