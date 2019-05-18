@@ -44,10 +44,10 @@ async function sampleTransaction(tx) {
 
 /**
  * Prescription Fullfilment
- * @param {org.example.opiodnetwork.prescriptionFullfilment} prescriptionFullfilment
+ * @param {org.example.opiodnetwork.prescriptionFulfillment} prescriptionFulfillment
  * @transaction
  */
-async function prescriptionFullfilment(tx){
+async function prescriptionFulfillment(tx){
     tx.prescription.dateIssued = tx.dateIssued;
     tx.prescription.fulfilled = true;
     

@@ -99,7 +99,7 @@ transaction SampleTransaction {
   o String newValue
 }
 
-transaction prescriptionFullfillment{
+transaction prescriptionFulfillment{
   --> Prescription prescription
   o String dateIssued
 }
