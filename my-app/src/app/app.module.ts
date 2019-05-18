@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
@@ -31,7 +30,7 @@ import { AgmOverlays } from 'agm-overlays';
     AppRoutingModule,
     AgmOverlays,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC9ieYUxxb1a6qEfytJWGJVfr_EfDScyNY' + '',
+      apiKey: 'AIzaSyC9ieYUxxb1a6qEfytJWGJVfr_EfDScyNY',
       libraries: ["places"],
     })
   ],
