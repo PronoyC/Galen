@@ -73,6 +73,14 @@ asset CriminalRecord identified by criminalRecordId{
   --> Patient patient
 }
 
+asset OverdoseReport identified by reportID{
+  o String reportID
+  o String name
+  o String location
+  o String age
+  o String sex
+}
+
 asset Prescription identified by prescriptionId{
   o String prescriptionId
   --> Patient patient
@@ -99,7 +107,7 @@ transaction SampleTransaction {
   o String newValue
 }
 
-transaction prescriptionFullfillment{
+transaction prescriptionFulfillment{
   --> Prescription prescription
   o String dateIssued
 }
