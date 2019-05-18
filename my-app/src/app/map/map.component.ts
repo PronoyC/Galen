@@ -33,11 +33,12 @@ export class MapComponent implements OnInit {
     let y = 0;
     this.http.get('http://localhost:3000/api/OverdoseReport').subscribe((val) => {
       console.log("POST call successful value returned in body", val);
-      for (let i = 0; i < val.length; i++) {
-        this.riskZones.push({
-          'lat': val[i]['lat'],
-          'lng': val[i]['lng']
-        });
+      for (let i =0; i < val.length; i++ ) {
+        console.log("VAL:", val[i]);
+        // this.riskZones.push({
+        //   'lat': i['lat'],
+        //   'lng': i['lng']
+        // });
       }
 
       for (let i = 0; i < this.riskZones.length; i++) {
@@ -48,8 +49,6 @@ export class MapComponent implements OnInit {
         'lat': x/this.riskZones.length,
         'lng' : y/this.riskZones.length
       });
-      resolve(val);
-
     });
   }
 
