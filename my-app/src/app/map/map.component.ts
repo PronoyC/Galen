@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
   //@TODO Abhinav add what you want
   riskZones = [
     // {lat: 43.663470 + 0.0025, lng: -79.419980 - 0.003}, //Christie Pits Park
-    {lat: 43.648400 + 0.0025, lng: -79.397310 - 0.003}, //Grafitti Alley
+    // {lat: 43.648400 + 0.0025, lng: -79.397310 - 0.003}, //Grafitti Alley
     {lat: 43.664456 + 0.0025, lng: -79.390442 - 0.003}, //UofT
     {lat: 43.655640 + 0.0025, lng: -79.386800 - 0.003} //Younge-Dundas
   ];
