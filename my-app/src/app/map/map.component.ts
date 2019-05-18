@@ -26,18 +26,30 @@ export class MapComponent implements OnInit {
   infoWindow: any;
   service: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     let x = 0;
     let y = 0;
-    for (let i = 0; i < this.riskZones.length; i++) {
-      x += this.riskZones[i]['lat'];
-      y += this.riskZones[i]['lng'];
-    }
-    this.safeZones.push({
-      'lat': x/this.riskZones.length,
-      'lng' : y/this.riskZones.length
+    this.http.get('http://localhost:3000/api/OverdoseReport').subscribe((val) => {
+      console.log("POST call successful value returned in body", val);
+      for (let i = 0; i < val.length; i++) {
+        this.riskZones.push({
+          'lat': val[i]['lat'],
+          'lng': val[i]['lng']
+        });
+      }
+
+      for (let i = 0; i < this.riskZones.length; i++) {
+        x += this.riskZones[i]['lat'];
+        y += this.riskZones[i]['lng'];
+      }
+      this.safeZones.push({
+        'lat': x/this.riskZones.length,
+        'lng' : y/this.riskZones.length
+      });
+      resolve(val);
+
     });
   }
 
