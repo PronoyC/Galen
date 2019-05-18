@@ -79,6 +79,8 @@ asset OverdoseReport identified by reportID{
   o String location
   o String age
   o String sex
+  o String lat
+  o String lng
 }
 
 asset Prescription identified by prescriptionId{
