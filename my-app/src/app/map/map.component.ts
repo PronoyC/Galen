@@ -35,12 +35,12 @@ export class MapComponent implements OnInit {
       console.log("POST call successful value returned in body", val);
       for (let i =0; i < val.length; i++ ) {
         console.log("VAL:", val[i]);
-        // this.riskZones.push({
-        //   'lat': i['lat'],
-        //   'lng': i['lng']
-        // });
+        this.riskZones.push({
+          'lat': parseFloat(i['lat']),
+          'lng': parseFloat(i['lng'])
+        });
       }
-
+      console.log("Risk Zones:", this.riskZones);
       for (let i = 0; i < this.riskZones.length; i++) {
         x += this.riskZones[i]['lat'];
         y += this.riskZones[i]['lng'];
