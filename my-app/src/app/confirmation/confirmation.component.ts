@@ -10,16 +10,16 @@ export class ConfirmationComponent implements OnInit {
   //Change this up if you wanna
   reqBody = {
     doctorName: 'Dev Patel',
-    doctorAddress: '742 Spadina Ave, Toronto, ON M5S 2J2',
-    patientName: 'Mindy Doe',
-    patientAddress: '8 Adelaide St W, Toronto, ON M5H 0A9',
-    patientAge: '21',
+    doctorAddress: '8 Adelaide St W Toronto',
+    patientName: 'Mindy Sharpe',
+    patientAddress: '12 Adelaide St Toronto',
+    patientAge: '30',
     patientSex: 'F',
-    datePrescribed: '17-02-2019',
-    drugName: 'Codeine',
-    drugAmount: '30mg',
+    datePrescribed: '16-02-2019',
+    drugName: 'Amphetamins',
+    drugAmount: '500mg',
     refills: 'None'
-  }
+  };
 
   constructor() { }
 

@@ -56,7 +56,7 @@ export class BeginComponent implements OnInit {
   chop(data){
     this.apiSubmit(data).then((data) => {
       let result = {};
-      console.log("ApiSubmit Chop")
+      console.log("ApiSubmit Chop");
       console.log(data);
       let resp = data.toString();
       resp.split('\n').forEach(function(x){
