@@ -1,6 +1,7 @@
 'use strict'
 //Body parser for req-body
 let bodyParser = require('body-parser');
+let url = "http://8f260337.ngrok.io";
 
 // Express routing
 const express = require('express');
@@ -16,7 +17,7 @@ const cors = require('cors')
 var corsOptions = {
   origin: 'http://localhost:4200',
   optionsSuccessStatus: 200
-}
+};
 
 app.use(cors(corsOptions));
 

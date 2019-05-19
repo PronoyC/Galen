@@ -11,22 +11,24 @@ export class ConfirmationComponent implements OnInit {
   //Change this up if you wanna
   reqBody = {
     doctorName: 'Dev Patel',
-    // doctorAddress: '8 Adelaide St W Toronto',
+    doctorAddress: '8 Adelaide St W Toronto',
     patientName: 'Mindy Sharpe',
-    // patientAddress: '12 Adelaide St Toronto',
-    // patientAge: '30',
-    // patientSex: 'F',
+    patientAddress: '12 Adelaide St Toronto',
+    patientAge: '30',
+    patientSex: 'F',
     datePrescribed: '16-02-2019',
     drugName: 'Amphetamins',
     drugAmount: '500mg',
     refills: 'None'
   };
 
+  url: string = 'http://8f260337.ngrok.io';
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     //TODO: NGROK @abhinav
-    this.http.get('http://eaf6f417.ngrok.io/api/Prescription').subscribe((val) => {
+    this.http.get(this.url + '/api/Prescription').subscribe((val) => {
       let res = val[Object.keys(val).length - 1];
       this.reqBody = {
         doctorName: res.doctor.name,
