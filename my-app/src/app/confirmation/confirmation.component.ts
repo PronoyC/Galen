@@ -30,11 +30,11 @@ export class ConfirmationComponent implements OnInit {
       let res = val[Object.keys(val).length - 1];
       this.reqBody = {
         doctorName: res.doctor.name,
-        // doctorAddress: res.doctor.address,
+        doctorAddress: res.doctor.address,
         patientName: res.patient.name,
-        // patientAddress: res.patient.address,
-        // patientAge: res.patient.age,
-        // patientSex: res.patient.sex,
+        patientAddress: res.patient.address,
+        patientAge: res.patient.age,
+        patientSex: res.patient.sex,
         datePrescribed: res.dateWritten,
         drugName: res.drug,
         drugAmount: res.amount,

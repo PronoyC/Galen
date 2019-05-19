@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495ff5e9-5040-41fa-8101-1e0471ab966b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Galen-V1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -12,29 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my-app/src/app/begin/begin.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="13" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,8 +30,8 @@
         <option value="$PROJECT_DIR$/my-app/src/app/env.json" />
         <option value="$PROJECT_DIR$/my-app/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/my-app/src/app/map/map.component.ts" />
-        <option value="$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.ts" />
         <option value="$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.html" />
+        <option value="$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.ts" />
       </list>
     </option>
   </component>
@@ -63,50 +44,24 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
               <item name="Galen-V1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/IdeaProjects/Galen-V1" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Galen-V1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
             <path>
               <item name="Galen-V1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/IdeaProjects/Galen-V1" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Galen-V1" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="my-app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Galen-V1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/IdeaProjects/Galen-V1" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="my-app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Galen-V1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/IdeaProjects/Galen-V1" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="my-app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Galen-V1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/IdeaProjects/Galen-V1" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="my-app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="app" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="confirmation" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="Galen-V1" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="~/IdeaProjects/Galen-V1" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="opiodnetwork" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -119,7 +74,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
@@ -146,18 +101,18 @@
       <option name="presentableId" value="Default" />
       <updated>1558188301755</updated>
       <workItem from="1558188305573" duration="7715000" />
-      <workItem from="1558205258700" duration="3285000" />
+      <workItem from="1558205258700" duration="3518000" />
+      <workItem from="1558217496511" duration="70000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11000000" />
+    <option name="totallyTimeSpent" value="11303000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -299,9 +254,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my-app/src/app/begin/env.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/my-app/src/app/begin/env.json" />
     <entry file="file://$PROJECT_DIR$/my-app/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -326,16 +279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="39" column="31" lean-forward="true" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my-app/src/app/map/map.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -347,10 +290,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my-app/src/app/begin/begin.component.ts">
+    <entry file="file://$PROJECT_DIR$/my-app/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        <state relative-caret-position="-2797" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
@@ -359,8 +307,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/my-app/src/app/confirmation/confirmation.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="13" selection-end-column="14" />
+        <state relative-caret-position="447">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my-app/src/app/begin/begin.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
