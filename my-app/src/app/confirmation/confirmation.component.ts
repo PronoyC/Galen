@@ -6,7 +6,7 @@ import {
   HttpClient
 } from '@angular/common/http';
 
-const url = "http://ae1112f9.ngrok.io"; // NGROK for REST API
+const url = "http://57e911b8.ngrok.io"; // NGROK for REST API
 
 @Component({
   selector: 'app-confirmation',
@@ -31,7 +31,7 @@ export class ConfirmationComponent implements OnInit {
   docName = [];
   patName = [];
 
-  //url: string = "http://ae1112f9.ngrok.io"; // NGROK for REST API
+  //url: string = "http://57e911b8.ngrok.io"; // NGROK for REST API
 
   constructor(private http: HttpClient) {}
 

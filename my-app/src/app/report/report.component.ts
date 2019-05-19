@@ -27,7 +27,7 @@ export class ReportComponent implements OnInit {
     lng: 'none'
   };
 
-  url: string = 'http://ae1112f9.ngrok.io';
+  url: string = 'http://57e911b8.ngrok.io';
   
   constructor(private http: HttpClient) {}
 

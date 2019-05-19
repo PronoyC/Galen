@@ -13,7 +13,7 @@ export class MapComponent implements OnInit {
   lat: number = 0;
   lng: number = 0;
   zoom: number = 14;
-  url: string = 'http://ae1112f9.ngrok.io';
+  url: string = 'http://57e911b8.ngrok.io';
 
   riskZones = [
     // {lat: 43.663470 + 0.0025, lng: -79.419980 - 0.003}, //Christie Pits Park
