@@ -22,7 +22,7 @@ export class ConfirmationComponent implements OnInit {
     refills: 'None'
   };
 
-  url: string = 'http://8f260337.ngrok.io';
+  url: string = 'http://eaf6f417.ngrok.io';
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +30,7 @@ export class ConfirmationComponent implements OnInit {
     //TODO: NGROK @abhinav
     this.http.get(this.url + '/api/Prescription').subscribe((val) => {
       let res = val[Object.keys(val).length - 1];
+      console.log(res);
       this.reqBody = {
         doctorName: res.doctor.name,
         doctorAddress: res.doctor.address,
