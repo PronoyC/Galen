@@ -38,6 +38,7 @@ export class MapComponent implements OnInit {
     let x = 0;
     let y = 0;
     //TODO: NGROK
+    console.log(this.url);
     this.http.get(this.url + '/api/OverdoseReport').subscribe((val) => {
       console.log("POST call successful value returned in body", val);
       for (let i = 0; i < Object.keys(val).length; i++ ) {
