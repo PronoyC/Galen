@@ -1,11 +1,6 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  HttpClient
-} from '@angular/common/http';
-
+import {Component,OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+const url = "http://ae1112f9.ngrok.io"; // NGROK for REST API
 
 @Component({
   selector: 'app-confirmation',
@@ -28,14 +23,14 @@ export class ConfirmationComponent implements OnInit {
     refills: ''
   };
 
-  url: string = "http://eaf6f417.ngrok.io"; // NGROK for REST API
+  //url: string = "http://ae1112f9.ngrok.io"; // NGROK for REST API
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
     let docName = [];
     let patName = [];
-    this.http.get(this.url + '/api/Prescription').subscribe((val) => {
+    this.http.get(url + '/api/Prescription').subscribe((val) => {
       let res = val[Object.keys(val).length - 1];
       console.log(res);
 
@@ -62,7 +57,7 @@ export class ConfirmationComponent implements OnInit {
     });
 
     //Get doctor info
-    this.http.get(this.url + '/api/Doctor', {
+    this.http.get(url + '/api/Doctor', {
       params: {
         firstName: docName[1], 
         lastName: docName[2]
@@ -74,7 +69,7 @@ export class ConfirmationComponent implements OnInit {
     });
 
     //Get patient info
-    this.http.get(this.url + '/api/Patient', {
+    this.http.get(url + '/api/Patient', {
       params: {
         firstName: patName[1], 
         lastName: patName[2]
