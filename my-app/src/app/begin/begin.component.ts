@@ -26,7 +26,7 @@ export class BeginComponent implements OnInit {
   uploadPrescription(event){
     this.fileUploaded = !this.fileUploaded;
     this.convertToBase64(event);
-    console.log(this.prescription);
+   // console.log(this.prescription);
     //console.log((<HTMLInputElement>document.getElementById("prescription")));
     if ((<HTMLInputElement>document.getElementById("prescription")).value !== null) {
       this.prescription = (<HTMLInputElement>document.getElementById("prescription")).value;

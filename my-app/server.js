@@ -51,6 +51,7 @@ app.post('/submitPrescription', function (req, res) { //req from angular front e
   function apiCall() {
     return new Promise((resolve, reject) => {
       let img = req.body.prescriptionImg;
+      //console.log(img);
       console.log('https://vision.googleapis.com/v1/images:annotate?key=' + apiKey);
 
       let options = {
@@ -86,7 +87,7 @@ app.post('/submitPrescription', function (req, res) { //req from angular front e
     });
   }
 
-  apiCall().then((data) => {
+  return apiCall().then((data) => {
     console.log(data);
     console.log(typeof data);
     let resp = data.split("\n");
@@ -98,30 +99,32 @@ app.post('/submitPrescription', function (req, res) { //req from angular front e
     return resp;
   }).then((resp) => {
     return getAllPrescriptions().then((data) => {
-      console.log("PRES: ", data);
-      console.log(data.length);
-      let d = new Date();
-      let prescription = {
-        "prescriptionId": "" + (data.length+1),
-        "patient": '{'+ resp[3][1] +'}',
-        "doctor": '{'+ resp[1][1] +'}',
-        "pharmacy": '{1}',
-        "drug": resp[8][1],
-        "amount": parseInt((resp[9][1]).match(/\d+/)) ,
-        "refills": resp[10][1] === 'none' ? 0 : parseInt(resp[10][1]),
-        "dateWritten": resp[7][1] ,
-        "dateIssued": d.getDate() + '-' + ((d.getMonth() < 10) ? '0' + d.getMonth() : d.getMonth()) + "-" + (d.getFullYear()-2000) ,
-        "refillable": resp[9][1] === "none" ? false : true,
-        "doctorRecommendations": "None",
-        "fulfilled": true
-      };
-      return prescription;
-    })
-    .then((data) => {
-      console.log("PARSED PRESCRIPTION OBJ:", data);
-      return storePrescription(data);
-    });
-
+        console.log("PRES: ", data);
+        console.log(data.length);
+        let d = new Date();
+        let prescription = {
+          "prescriptionId": "" + (data.length + 1),
+          "patient": '{' + resp[3][1] + '}',
+          "doctor": '{' + resp[1][1] + '}',
+          "pharmacy": '{1}',
+          "drug": resp[8][1],
+          "amount": parseInt((resp[9][1]).match(/\d+/)),
+          "refills": (resp[10][1] === 'none') ? 0 : parseInt(resp[10][1]),
+          "dateWritten": resp[7][1],
+          "dateIssued": d.getDate() + '-' + ((d.getMonth() < 10) ? '0' + d.getMonth() : d.getMonth()) + "-" + (d.getFullYear() - 2000),
+          "refillable": resp[9][1] === "none" ? false : true,
+          "doctorRecommendations": "None",
+          "fulfilled": true
+        };
+        if (isNaN(prescription['refills'])) {
+          prescription['refills'] = 0;
+        }
+        return prescription;
+      })
+      .then((data) => {
+        console.log("PARSED PRESCRIPTION OBJ:", data);
+        return storePrescription(data);
+      });
   });
 
 });
@@ -149,7 +152,7 @@ function getDoctor(name) {
       method: 'GET',
       url: bcRESTAPI + '/api/Doctor',
       qs: {
-        filter: '%7B%22firstName%22%3A%20%22' + name[0] + '%22%2C%20%22lastName%22%3A%20%22'+ name[1] +'%22%7D'
+        filter: '%7B%22firstName%22%3A%20%22' + name[0] + '%22%2C%20%22lastName%22%3A%20%22' + name[1] + '%22%7D'
       },
       headers: {
         'cache-control': 'no-cache',
