@@ -22,11 +22,13 @@ export class ConfirmationComponent implements OnInit {
     refills: 'None'
   };
 
+  url: string = 'http://8f260337.ngrok.io';
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     //TODO: NGROK @abhinav
-    this.http.get('http://eaf6f417.ngrok.io/api/Prescription').subscribe((val) => {
+    this.http.get(this.url + '/api/Prescription').subscribe((val) => {
       let res = val[Object.keys(val).length - 1];
       this.reqBody = {
         doctorName: res.doctor.name,

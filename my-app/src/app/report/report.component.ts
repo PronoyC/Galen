@@ -26,6 +26,8 @@ export class ReportComponent implements OnInit {
     lat: 'none',
     lng: 'none'
   };
+
+  url: string = 'http://8f260337.ngrok.io';
   
   constructor(private http: HttpClient) {}
 
@@ -60,7 +62,7 @@ export class ReportComponent implements OnInit {
 
   submit(){
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:3000/api/OverdoseReport', this.reqBody, httpOptions).subscribe((val) => {
+      this.http.post(this.url + '/api/OverdoseReport', this.reqBody, httpOptions).subscribe((val) => {
         console.log("POST call successful value returned in body", val);
         resolve(val);
       });

@@ -1,7 +1,8 @@
-'use strict'
+'use strict';
 
 //Body parser for req-body
 let bodyParser = require('body-parser');
+let url = "http://8f260337.ngrok.io";
 
 // Express routing
 const express = require('express');
@@ -15,7 +16,7 @@ const cors = require('cors')
 var corsOptions = {
   origin: 'http://localhost:4200',
   optionsSuccessStatus: 200
-}
+};
 
 app.use(cors(corsOptions));
 
@@ -127,7 +128,7 @@ function getAllPrescriptions() {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'GET',
-      url: 'http://localhost:3000/api/Prescription',
+      url: url + '/api/Prescription',
 
     };
 
@@ -144,7 +145,7 @@ function getDoctor(name) {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'GET',
-      url: 'http://localhost:3000/api/Doctor',
+      url: url + '/api/Doctor',
       qs: {
         filter: '%7B%22firstName%22%3A%20%22' + name[0] + '%22%2C%20%22lastName%22%3A%20%22'+ name[1] +'%22%7D'
       },
@@ -166,7 +167,7 @@ function storePrescription(data) {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'POST',
-      url: 'http://localhost:3000/api/Prescription',
+      url: url + '/api/Prescription',
       headers: {
         'cache-control': 'no-cache',
         Accept: 'application/json',

@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   lat: number = 0;
   lng: number = 0;
   zoom: number = 14;
+  url: string = 'http://8f260337.ngrok.io';
 
   riskZones = [
     // {lat: 43.663470 + 0.0025, lng: -79.419980 - 0.003}, //Christie Pits Park
@@ -37,7 +38,7 @@ export class MapComponent implements OnInit {
     let x = 0;
     let y = 0;
     //TODO: NGROK
-    this.http.get('http://eaf6f417.ngrok.io/api/OverdoseReport').subscribe((val) => {
+    this.http.get(this.url + '/api/OverdoseReport').subscribe((val) => {
       console.log("POST call successful value returned in body", val);
       for (let i = 0; i < Object.keys(val).length; i++ ) {
         this.riskZones.push({
