@@ -14,29 +14,29 @@ Police have access to the solution as well, being able to add overdose reports t
 
 Ultimately, Galen strives to finally address the Opioid epidemic in a tangible manner.
 
-### Landing Page
+## Landing Page
 ![GitHub Logo](/assets/landing.png)
 
-### Pharmacy Flow:
+## Pharmacy Flow:
 
-##### Pharmacy Prescription Upload
+### Pharmacy Prescription Upload
 ![GitHub Logo](/assets/begin.png)
 
-##### Confirm Info
+### Confirm Info
 ![GitHub Logo](/assets/confirm.png)
 
-##### Submission of Prescription to Blockchain
+### Submission of Prescription to Blockchain
 ![GitHub Logo](/assets/pres1.png)
 
-### Police Flow
+## Police Flow
 
-#####Dashboard
+###Dashboard
 ![GitHub Logo](/assets/dashboard.png)
 
-#####Submit Police Overdose Report
+###Submit Police Overdose Report
 ![GitHub Logo](/assets/OD1.png)
 
-#####Heat Map of incidents
+###Heat Map of incidents
 ![GitHub Logo](/assets/map.png)
 
 
