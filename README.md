@@ -30,13 +30,13 @@ Ultimately, Galen strives to finally address the Opioid epidemic in a tangible m
 
 ## Police Flow
 
-###Dashboard
+### Dashboard
 ![GitHub Logo](/assets/dashboard.png)
 
-###Submit Police Overdose Report
+### Submit Police Overdose Report
 ![GitHub Logo](/assets/OD1.png)
 
-###Heat Map of incidents
+### Heat Map of incidents
 ![GitHub Logo](/assets/map.png)
 
 
