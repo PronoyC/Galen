@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 
 
 app.post('/submitPrescription', function (req, res) { //req from angular front end
-  //console.log(req.body.prescriptionImg);
+
   function apiCall() {
     return new Promise((resolve, reject) => {
       let img = req.body.prescriptionImg;
@@ -76,60 +76,110 @@ app.post('/submitPrescription', function (req, res) { //req from angular front e
 
       request(options, function (error, response, body) {
         if (error) throw new Error(error);
-        console.log("POST REQUEST OCR SUCCESSFUL:");
+        //console.log("POST REQUEST OCR SUCCESSFUL:");
+        console.log(body['responses'][0]['textAnnotations']);
         resolve(body['responses'][0]['textAnnotations'][0]['description']);
       });
 
     });
   }
-  apiCall().then((data)=>{
+
+  apiCall().then((data) => {
     console.log(data);
     console.log(typeof data);
-    let res = data.split("\n");
-    for(let i = 0; i < res.length; i++){
-      res[i] = res[i].split(": ");
+    let resp = data.split("\n");
+    console.log("PARSING");
+    for (let i = 0; i < resp.length; i++) {
+      resp[i] = resp[i].split(": ");
+      console.log(i, resp[i]);
     }
-    console.log("PARSED", res);
+    
+    return resp;
+  }).then((resp) => {
+    return getAllPrescriptions().then((data) => {
+      console.log("PRES: ", data);
+      console.log(data.length);
+      let prescription = {
+        "prescriptionId": "" + (data.length+1),
+        "patient": '{'+ resp[3][1] +'}',
+        "doctor": '{'+ resp[1][1] +'}',
+        "pharmacy": '{1}',
+        "drug": resp[8][1],
+        "amount": parseInt((resp[9][1]).match(/\d+/)) ,
+        "refills": resp[10][1] === 'none' ? 0 : parseInt(resp[10][1]),
+        "dateWritten": resp[7][1] ,
+        "dateIssued": "string",
+        "refillable": resp[9][1] === "none" ? false : true,
+        "doctorRecommendations": "None",
+        "fulfilled": true
+      };
+      return prescription;
+    }).then((data) => {
+      console.log("PARSED PRESCRIPTION OBJ:", data);
+      return storePrescription(data);
+    });
+
   });
 
-  // function parse() {
-  //   return new Promise((resolve, reject) => {
-  //     apiCall().then((data) => {
-  //       console.log(JSON.stringify((JSON.parse(data).responses[0])['textAnnotations'][0]['description']));
-
-  //       resolve(JSON.parse(data).responses[0]);
-  //     });
-  //   });
-  // }
-
-  // function stringify() {
-  //   return new Promise((resolve, reject) => {
-  //     parse().then((data) => {
-  //       console.log(JSON.stringify(data['textAnnotations'][0]['description']));
-
-  //       resolve(JSON.stringify(data['textAnnotations'][0]['description']));
-  //     });
-  //   });
-  // }
-
-  // function parsePres() {
-  //   let result = {};
-  //   return new Promise((resolve, reject) => {
-  //     stringify().then((data) => {
-  //       resolve(data.split('\n'));
-  //     });
-  //   });
-  // }
-
-  // return new Promise((resolve, reject) => {
-  //   parsePres().then((data) => {
-  //     console.log(data);
-  //     res.send(data);
-  //   });
-  // });
 });
 
-// .forEach((data) => {
-//     let arr = data.split(': ');
-//     arr[1] && (result[arr[0]] = arr[1]);
-// })
+function getAllPrescriptions() {
+  return new Promise((resolve, reject) => {
+    var options = {
+      method: 'GET',
+      url: 'http://localhost:3000/api/Prescription',
+
+    };
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+      console.log(JSON.parse(body));
+      resolve(JSON.parse(body));
+    });
+  });
+}
+
+function getDoctor(name) {
+  name = name.split(" ");
+  return new Promise((resolve, reject) => {
+    var options = {
+      method: 'GET',
+      url: 'http://localhost:3000/api/Doctor',
+      qs: {
+        filter: '%7B%22firstName%22%3A%20%22' + name[0] + '%22%2C%20%22lastName%22%3A%20%22'+ name[1] +'%22%7D'
+      },
+      headers: {
+        'cache-control': 'no-cache',
+        Accept: 'application/json'
+      }
+    };
+
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+
+      console.log(body);
+    });
+  });
+}
+
+function storePrescription(data) {
+  return new Promise((resolve, reject) => {
+    var options = {
+      method: 'POST',
+      url: 'http://localhost:3000/api/Prescription',
+      headers: {
+        'cache-control': 'no-cache',
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: data,
+      json: true
+    };
+    console.log("STORING PRESCRIPTION:", data);
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+      console.log(body);
+      resolve(body);
+    });
+  });
+}
