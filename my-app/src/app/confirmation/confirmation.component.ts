@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  HttpClient
+} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-confirmation',
@@ -22,27 +28,65 @@ export class ConfirmationComponent implements OnInit {
     refills: 'None'
   };
 
-  url: string = 'http://8f260337.ngrok.io';
+  url: string = "http://eaf6f417.ngrok.io"; // NGROK for REST API
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    //TODO: NGROK @abhinav
+    let docName = [];
+    let patName = [];
     this.http.get(this.url + '/api/Prescription').subscribe((val) => {
       let res = val[Object.keys(val).length - 1];
+      console.log(res);
+
+      //Set names
+      let nameRegex = /7B(\w+)%20(\w+)/;
+      docName = nameRegex.exec(res.doctor);
+      patName = nameRegex.exec(res['patient']);
+      let doctor = docName[1] + " " + docName[2];
+      let patient = patName[1] + " " + patName[2];
+
+
       this.reqBody = {
-        doctorName: res.doctor.name,
-        doctorAddress: res.doctor.address,
-        patientName: res.patient.name,
-        patientAddress: res.patient.address,
-        patientAge: res.patient.age,
-        patientSex: res.patient.sex,
+        doctorName: doctor,
+        doctorAddress: "",
+        patientName: patient,
+        patientAddress: "",
+        patientAge: "",
+        patientSex: "",
         datePrescribed: res.dateWritten,
         drugName: res.drug,
         drugAmount: res.amount,
         refills: res.refills
       };
     });
+
+    //Get doctor info
+    this.http.get(this.url + '/api/Doctor', {
+      params: {
+        firstName: docName[1], 
+        lastName: docName[2]
+      }
+    }).subscribe((val) => {
+      let res = val[Object.keys(val).length - 1];
+      console.log(res);
+      this.reqBody['doctorAddress'] = res['address'];
+    });
+
+    //Get doctor info
+    this.http.get(this.url + '/api/Patient', {
+      params: {
+        firstName: patName[1], 
+        lastName: patName[2]
+      }
+    }).subscribe((val) => {
+      let res = val[Object.keys(val).length - 1];
+      console.log(res);
+      this.reqBody['patientAddress'] = res['address'];
+      this.reqBody['patientAge'] = res['age'];
+      this.reqBody['patientSex'] = res['sex'];
+    });
+
   }
 
 }

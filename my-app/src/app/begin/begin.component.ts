@@ -44,7 +44,7 @@ export class BeginComponent implements OnInit {
 
     reader.onload = function () {
       self.prescriptionB64 = (reader.result.toString()).substring(23);
-      console.log(self.prescriptionB64);
+      //console.log(self.prescriptionB64);
       self.chop(self.prescriptionB64);
       self.prescription = <string>reader.result;
     };

@@ -9,10 +9,10 @@ let request = require('request');
 let http = require('http');
 let app = express();
 let apiKey = "AIzaSyBuBIYaXJxNOzqeIgXNkJZu0e9GZmQZQeA";
-let bcRESTAPI = "http://eaf6f417.ngrok.io";
+let bcRESTAPI = "http://eaf6f417.ngrok.io"; // ngROK for COMPOSER REST API
 //let bcRESTAPU = "http://localhost:3000"
 
-const cors = require('cors')
+const cors = require('cors');
 
 var corsOptions = {
   origin: 'http://localhost:4200',
