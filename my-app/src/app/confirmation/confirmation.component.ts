@@ -73,7 +73,7 @@ export class ConfirmationComponent implements OnInit {
       this.reqBody['doctorAddress'] = res['address'];
     });
 
-    //Get doctor info
+    //Get patient info
     this.http.get(this.url + '/api/Patient', {
       params: {
         firstName: patName[1], 
