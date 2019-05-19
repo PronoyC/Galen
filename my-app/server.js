@@ -1,5 +1,4 @@
 'use strict'
-
 //Body parser for req-body
 let bodyParser = require('body-parser');
 
@@ -9,6 +8,8 @@ let request = require('request');
 let http = require('http');
 let app = express();
 let apiKey = "AIzaSyBuBIYaXJxNOzqeIgXNkJZu0e9GZmQZQeA";
+let bcRESTAPI = "http://eaf6f417.ngrok.io";
+//let bcRESTAPU = "http://localhost:3000"
 
 const cors = require('cors')
 
@@ -93,12 +94,12 @@ app.post('/submitPrescription', function (req, res) { //req from angular front e
       resp[i] = resp[i].split(": ");
       console.log(i, resp[i]);
     }
-    
     return resp;
   }).then((resp) => {
     return getAllPrescriptions().then((data) => {
       console.log("PRES: ", data);
       console.log(data.length);
+      let d = new Date();
       let prescription = {
         "prescriptionId": "" + (data.length+1),
         "patient": '{'+ resp[3][1] +'}',
@@ -108,13 +109,14 @@ app.post('/submitPrescription', function (req, res) { //req from angular front e
         "amount": parseInt((resp[9][1]).match(/\d+/)) ,
         "refills": resp[10][1] === 'none' ? 0 : parseInt(resp[10][1]),
         "dateWritten": resp[7][1] ,
-        "dateIssued": "string",
+        "dateIssued": d.getDate() + '-' + ((d.getMonth() < 10) ? '0' + d.getMonth() : d.getMonth()) + "-" + (d.getFullYear()-2000) ,
         "refillable": resp[9][1] === "none" ? false : true,
         "doctorRecommendations": "None",
         "fulfilled": true
       };
       return prescription;
-    }).then((data) => {
+    })
+    .then((data) => {
       console.log("PARSED PRESCRIPTION OBJ:", data);
       return storePrescription(data);
     });
@@ -127,7 +129,7 @@ function getAllPrescriptions() {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'GET',
-      url: 'http://localhost:3000/api/Prescription',
+      url: bcRESTAPI + '/api/Prescription',
 
     };
 
@@ -144,7 +146,7 @@ function getDoctor(name) {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'GET',
-      url: 'http://localhost:3000/api/Doctor',
+      url: bcRESTAPI + '/api/Doctor',
       qs: {
         filter: '%7B%22firstName%22%3A%20%22' + name[0] + '%22%2C%20%22lastName%22%3A%20%22'+ name[1] +'%22%7D'
       },
@@ -166,7 +168,7 @@ function storePrescription(data) {
   return new Promise((resolve, reject) => {
     var options = {
       method: 'POST',
-      url: 'http://localhost:3000/api/Prescription',
+      url: bcRESTAPI + '/api/Prescription',
       headers: {
         'cache-control': 'no-cache',
         Accept: 'application/json',
